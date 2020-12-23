@@ -21,7 +21,7 @@ export default {
       let mensaje={
           ok:true,
           token:"aca va el token",
-          id:"id proyecto2"
+          id:"5fe0458962e2eb21a147b493"
         };
       var wn = document.getElementById('piStar').contentWindow;
 // postMessage arguments: data to send, target origin
