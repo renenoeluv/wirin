@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import SuiVue from 'semantic-ui-vue';
-Vue.use(SuiVue);
+require ('./plugins')
+
 Vue.config.productionTip = false
 
 new Vue({

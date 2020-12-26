@@ -1,10 +1,10 @@
 <template>
   <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-    <mensaje child="http://192.168.0.223:8082/"></mensaje>
+    <mensaje child="http://192.168.0.223:8090/"></mensaje>
     <iframe
       class="embed-responsive-item"
       id="piStar"
-      src="http://192.168.0.223:8082/"
+      src="http://192.168.0.223:8090/"
       width="1340"
       height="600"
       allowfullscreen

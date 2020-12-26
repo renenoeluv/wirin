@@ -1,17 +1,16 @@
 <template>
-  <div class="container">
+  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
     <mensaje child="http://localhost:8090/"></mensaje>
     <iframe
       class="responsive-iframe"
       id="piStar"
       src="http://localhost:8090/"
-      width="400"
-      height="500"
+      width="1340"
+      height="600"
       frameborder="0"
       allowfullscreen
     ></iframe>
-    <div>
-  </div>
+   
   </div>
   
 </template>

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import pistarv from '../views/Pistarview.vue'
+import projectsv from '../views/Projects.vue'
 import projectv from '../views/Project.vue'
-
 //
 import test from '../views/ts.vue'
 // 
@@ -24,6 +24,11 @@ const routes = [
   },
   {
     path: '/',
+    name: 'projects',
+    component: projectsv
+  },
+  {
+    path: '/project',
     name: 'project',
     component: projectv
   },
