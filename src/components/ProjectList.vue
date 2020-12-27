@@ -50,7 +50,7 @@
         data(){
             return{
                 paginate:['projects'],
-                perPage: 8
+                perPage: 50
             }
             
         },
@@ -64,6 +64,7 @@
             ...mapActions('projects',['fetchProjects']),
             openProject(project){
                 console.log(project)
+                localStorage.setItem("idProject",project)
                 return this.$router.push('/project')
             }
         }

@@ -1,6 +1,23 @@
 <template>
 <b-navbar toggleable="md" type="dark" variant="dark">
-      <b-navbar-brand >Welcome User</b-navbar-brand>
+     
+      <div v-if="home">
+
+        <b-navbar variant="faded" type="light">
+        <b-navbar-brand to="/">
+          <b-icon icon="house-door" scale="2" variant="primary"></b-icon>
+        </b-navbar-brand>
+        </b-navbar>
+
+      </div><div v-else>
+        <b-navbar variant="faded" type="light">
+        <b-navbar-brand to="/project">
+           <b-icon icon="house-door" scale="2" variant="primary"></b-icon>
+        </b-navbar-brand>
+        </b-navbar>
+      </div>   
+
+      <b-navbar-brand style="position:relative;left:50%">Welcome User</b-navbar-brand>
       <div v-if="create">
           <b-navbar-brand  v-b-toggle.sidebar-variant>Create Project</b-navbar-brand>
       </div>
@@ -25,6 +42,15 @@
 </template>
 <script>
 export default {
-    props:['create']
+    
+    props: {
+      create:Boolean,
+      home:{
+        type:Boolean,
+        default:true
+      }
+}
+      
+    
 }
 </script>

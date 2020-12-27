@@ -21,9 +21,9 @@ export default {
       let mensaje={
           ok:true,
           token:"aca va el token",
-          id:"5fe0458962e2eb21a147b493"
+          id:localStorage.getItem('idProject')
         };
-      var wn = document.getElementById('piStar').contentWindow;
+      var wn = await document.getElementById('piStar').contentWindow;
 // postMessage arguments: data to send, target origin
         console.log('intentando pasar datos');
         wn.postMessage(mensaje, this.child);

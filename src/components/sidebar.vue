@@ -9,10 +9,10 @@
                     
                     <label class="sr-only" for="inline-form-input-username">Project name</label>
                     
-                    <b-form-input id="ProjectName" placeholder="Project name"></b-form-input>
+                    <b-form-input  type="nombre" v-model="nombre" placeholder="Project name"></b-form-input>
                     
 
-                    <b-button id="create" variant="primary" >Create</b-button>
+                    <b-button id="create" @click="create()" variant="primary" >Create</b-button>
                 </b-form>
             </div>
             
@@ -53,8 +53,27 @@
 }
 </style>
 <script>
+import { mapActions } from 'vuex'
 
 export default {
-    
+    data(){
+        return{
+         idUser:'idu1',
+         nombre:'',
+         estado:true,
+         ultimaActualizacion: new Date()
+          
+        }
+    },
+    methods:{
+            ... mapActions('projects',['CreateProject']),
+           create(){
+               console.log("intentando abrir data")
+              this.CreateProject(this.$data)
+
+           }
+            
+        
+    }
 }
 </script>
