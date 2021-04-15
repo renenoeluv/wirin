@@ -21,7 +21,7 @@ export async function CreateProject({commit},data){
         console.log(data)
         //data = await JSON.stringify(data)
         console.log(data)
-        let res = await fetch("http://localhost:3000/proyecto/add",{
+        let res = await fetch("localhost:3000/proyecto",{
             method: 'POST',
             headers: {
                         'Content-Type': 'application/json'
@@ -32,7 +32,8 @@ export async function CreateProject({commit},data){
             
         });
         let resMdd = await res.json();
-        commit ('projects/setProjects',resMdd,{root:true})
+        commit ('projects/addProject',resMdd,{root:true})
+        
     } catch {
         console.log("hubo un error");
         

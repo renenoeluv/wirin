@@ -4,10 +4,17 @@
       :home="false"
     ></navbar>
     <pistar></pistar>
+    <buttonbar
+      :transform="true"
+      :verify="true"
+      :autosave="false"
+    ></buttonbar>
+    
   </div>
 </template>
 
 <script>
+import Buttonbar from '../components/Buttonbar.vue'
 import Navbar from '../components/Navbar.vue'
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
@@ -17,7 +24,9 @@ export default {
   name: 'Home',
   components: {
     Pistar,
-    Navbar
+    Navbar,
+    Buttonbar,
+    
   }
 }
 </script>

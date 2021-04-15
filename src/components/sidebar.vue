@@ -12,7 +12,8 @@
                     <b-form-input  type="nombre" v-model="nombre" placeholder="Project name"></b-form-input>
                     
 
-                    <b-button id="create" @click="create()" variant="primary" >Create</b-button>
+                    <b-button  id="create" @click="create()"  variant="primary">Create</b-button>
+                     
                 </b-form>
             </div>
             

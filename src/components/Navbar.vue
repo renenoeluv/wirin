@@ -5,7 +5,7 @@
 
         <b-navbar variant="faded" type="light">
         <b-navbar-brand to="/">
-          <b-icon icon="house-door" scale="2" variant="primary"></b-icon>
+          <b-icon icon="house-door" scale="2" variant="primary" title="Projects Dashboard"></b-icon>
         </b-navbar-brand>
         </b-navbar>
 
