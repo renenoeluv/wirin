@@ -1,22 +1,52 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import pistarv from '../views/Pistarview.vue'
-
+import projectsv from '../views/Projects.vue'
+import projectv from '../views/Project.vue'
+import login  from '../views/Login.vue'
+import register from '../views/Register.vue'
+import caview from '../views/Caview.vue'
+//
+import test from '../views/ts.vue'
+// 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/pistar',
     name: 'pistarv',
     component: pistarv
   },
   {
-    path: '/Caview',
-    name: 'cav',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Caview.vue')
+    path: '/caview',
+    name: 'caview',
+    component: caview
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: projectsv
+  },
+  {
+    path: '/project',
+    name: 'project',
+    component: projectv
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: test
+  },
+  {
+    path: '/',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: register
+
   }
 ]
 

@@ -1,0 +1,18 @@
+{message1:{
+    "ok":true,
+    state: 'transform',
+
+},
+message2:{
+    ok:true,
+    state:'verify'
+},
+message3:{
+    ok:true,
+    state:'save'
+},
+message4:{
+    ok:true,
+    state:'autosave'
+}
+}
