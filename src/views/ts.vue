@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>project</h1>
-    <project-list></project-list>
+    <modal></modal>
     <router-view/>
     <div id="nav">
       <router-link to="/pistar">Pistar</router-link> |
@@ -15,10 +15,10 @@
   </div>
 </template>
 <script>
-import ProjectList from '../components/ProjectList.vue';
 
+import modal from '../components/modal';
 export default {
-  components: { ProjectList },
+  components: { modal },
   name: "test",
   
 };

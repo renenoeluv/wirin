@@ -65,7 +65,7 @@
             openProject(project){
                 console.log(project)
                 localStorage.setItem("idProject",project)
-                return this.$router.push('/project')
+                return this.$router.push('/project')//devuelve vista de projecto
             }
         }
     }

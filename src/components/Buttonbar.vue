@@ -3,16 +3,16 @@
      
      
     <div v-if="transform">
-        <b-navbar-brand v-b-toggle @click="message('m1')" >Transform and save</b-navbar-brand>
+        <b-navbar-brand v-b-toggle @click="message('1')" >Transform and save</b-navbar-brand>
     </div>
     <div v-if="verify">
-        <b-navbar-brand v-b-toggle @click="message('m2')">Verify</b-navbar-brand>
+        <b-navbar-brand v-b-toggle @click="message('2')">Verify</b-navbar-brand>
     </div>
     
-    <b-navbar-brand v-b-toggle @click="message('m3')">Save</b-navbar-brand>
+    <b-navbar-brand v-b-toggle @click="message('3')">Save</b-navbar-brand>
     
     <div v-if="autosave">
-        <b-navbar-brand v-b-toggle @click="message('m4')">Auto Save</b-navbar-brand>
+        <b-navbar-brand v-b-toggle @click="message('4')">Auto Save</b-navbar-brand>
 
     </div>
 

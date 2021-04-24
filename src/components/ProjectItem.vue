@@ -6,7 +6,7 @@
     >Project ID: {{project.idProyecto}}
     Last Update: {{(project.ultimaActualizacion)}}
         <b-button
-            block
+            
             variant="success"
             
             @click="$emit('openProject',project.idProyecto)"
@@ -14,6 +14,12 @@
         >
             open project
         </b-button>
+        
+        <b-dropdown id="dropdown-1" text="..." class="m-md-2">
+            <b-dropdown-item>edit</b-dropdown-item>
+            <b-dropdown-item>delete</b-dropdown-item>
+        </b-dropdown>
+        
     </b-card>    
 </template>
 
