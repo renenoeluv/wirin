@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <h1>project</h1>
-    <modal></modal>
     <router-view/>
     <div id="nav">
       <router-link to="/pistar">Pistar</router-link> |
@@ -16,9 +15,9 @@
 </template>
 <script>
 
-import modal from '../components/modal';
+
 export default {
-  components: { modal },
+  components: { },
   name: "test",
   
 };

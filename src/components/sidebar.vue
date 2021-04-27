@@ -57,7 +57,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-    data(){
+    data(){//borrar 
         return{
          idUser:'idu1',
          nombre:'',

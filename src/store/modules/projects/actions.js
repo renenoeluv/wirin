@@ -33,7 +33,7 @@ export async function CreateProject({commit},data){
         });
         let resMdd = await res.json();
         commit ('projects/addProject',resMdd,{root:true})
-        
+        return true;
     } catch {
         console.log("hubo un error");
         
@@ -44,12 +44,16 @@ export async function UpdateProject({commit},data){
     
     try {
         console.log("actualizando proyectos");
+        let id = data._id
         data = await JSON.stringify(data)
         //data = await JSON.parse(data)
         console.log(data)
         //data = await JSON.stringify(data)
         console.log(data)
-        let res = await fetch("http://localhost:3000/proyecto",{
+        let url ="http://localhost:3000/proyecto/"
+        url=url+id
+        console.log(url)
+        let res = await fetch(url,{
             method: 'PUT',
             headers: {
                         'Content-Type': 'application/json'
@@ -60,8 +64,8 @@ export async function UpdateProject({commit},data){
             
         });
         let resMdd = await res.json();
-        commit ('projects/addProject',resMdd,{root:true})
-        
+        commit ('projects/modifyProject',resMdd,{root:true})
+        return true
     } catch {
         console.log("hubo un error");
         
