@@ -8,17 +8,23 @@
       <router-link to="/">Project</router-link>
       <router-link to="/test"> test</router-link>
     </div>
-    
+    <button @click="test">sa</button>
+    <modalN></modalN>
     <router-view/>
     
   </div>
 </template>
 <script>
-
+import modalN from '../components/modals/modalN'
 
 export default {
-  components: { },
+  components: {modalN },
   name: "test",
+  methods:{
+    test(){
+      this.$root.$refs.modalN.showMsgBoxOne();
+    }
+  }
   
 };
 </script>
