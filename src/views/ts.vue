@@ -16,14 +16,17 @@
 </template>
 <script>
 import modalN from '../components/modals/modalN'
-
+import store from '../store'
 export default {
   components: {modalN },
   name: "test",
   methods:{
-    test(){
-      this.$root.$refs.modalN.showMsgBoxOne();
-    }
+    async test(){
+      //this.$root.$refs.modalN.showMsgBoxOne();
+      console.log(store.state.user.user)
+    },
+    
+    
   }
   
 };

@@ -40,21 +40,40 @@
 </template>
 
 <script>
+ import {mapActions, mapGetters,/*mapState,/*mapMutations*/} from 'vuex'
 export default {
     name:"login",
     methods:{
-        sign(){
+        async sign(){
             console.log(this.user);
             console.log(this.password)
-        }
+            let email = this.user
+            let password= this.password
+            let response=await this.login({email,password})//llamo a action de vuex
+            if(response==true){
+               
+                 this.$router.push('/projects')
+        
+            }else{//aca modificar computadas
+                console.log("data incorrecta")
+            }
+        
+        },
+        ...mapGetters("user",['isLoggedIn']),
+        ...mapActions("user",['login'])
+        
+        
     },
     data(){
         return{
+            
             user:'',
             password:''
+        
+            
         }
     }
-
+    
 }
 </script>
 <style>

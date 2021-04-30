@@ -39,7 +39,7 @@ export default {
         var flag=true
         var n=0
         var i=0
-        while(flag){
+        while(flag && n<messagesList.length){
             i=messagesList[n]
             if(message==i.idm){
                 
@@ -63,8 +63,9 @@ export default {
         var flag= true
         var i
         var n=0
-        while(flag){
+        while(flag && n<messagesList.length){
             i=messagesList[n]
+            console.log(messagesList[n])
             if(event.data.idm==i.idm){
                     if(i.idm==0){
                         this.envio_data('0');

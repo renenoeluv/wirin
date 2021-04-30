@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import {mapActions,/*mapState,/*mapMutations*/} from 'vuex'
+    import {mapActions, mapState,/*mapState,/*mapMutations*/} from 'vuex'
     import ProjectItem from './ProjectItem'
     import store from '@/store'
     import modelE from './modals/modalE'
@@ -58,7 +58,8 @@
             action:{}
         },
         mounted(){
-            this.fetchProjects()
+            this.fetchProjects(localStorage.getItem("idUser"))//
+
         },
         data(){
             return{
@@ -74,6 +75,7 @@
 
         },
         methods:{
+            ...mapState("user",['user']),
             ...mapActions('projects',['fetchProjects']),
             openProject(project){
                 console.log(project)
