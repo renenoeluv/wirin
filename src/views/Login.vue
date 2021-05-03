@@ -1,107 +1,50 @@
 <template>
-    <div>
-        <h1>Este sera el login</h1>
-        <b-container fluid="sm">
-            <b-row>
-                <b-col md="6" offset-md="4">
-                    <b-card body-border-variant="success" class="card">
-                        <h6>Username</h6>
-                        <b-form class="user" inline>
-                            
-                            <label class="sr-only" for="inline-form-input-username">Username</label>
-                            
-                            <b-form-input  type="user" v-model="user" placeholder="User"></b-form-input>
-                        </b-form>
-                        <div class="login">
-                            <h6>Password</h6>
-                            <b-form class="pass" inline>
-                                
-                                <label class="sr-only" for="inline-form-input-username">Project name</label>
-                                
-                                <b-form-input  type="password" v-model="password" placeholder="Password"></b-form-input>
-                                
-
-                                
-                            </b-form>
-                        </div>   
-                        <div class="login">
-                            <b-button  id="sign" @click="sign()"  variant="success">Sign in</b-button>
-                        </div> 
-                        <div class="login">
-                            <router-link to="/register">Create an account</router-link>
-                        </div>
-                        
-                    </b-card>
-            
+    <div id="testin">
+        <b-container fluid="xl">
+            <b-row></b-row>
+            <b-row id="fila1" align-v="center">
+                <b-col>
+                    
                 </b-col>
+                <b-col>
+                    <loginC></loginC>
+                </b-col>
+                <b-col >
+                    <links></links>
+                </b-col>
+                 
             </b-row>
+            <b-row>
+            </b-row>
+              
+        <b-navbar toggleable type="dark" variant="dark" fixed="bottom">
+            <b-navbar-brand>informacion de pagina?</b-navbar-brand>
+            
+    
+         </b-navbar>
         </b-container>
+         
     </div>
 </template>
 
 <script>
- import {mapActions, mapGetters,/*mapState,/*mapMutations*/} from 'vuex'
+import loginC from '../components/login'
+import links from '../components/linksCard'
 export default {
     name:"login",
-    methods:{
-        async sign(){
-            console.log(this.user);
-            console.log(this.password)
-            let email = this.user
-            let password= this.password
-            let response=await this.login({email,password})//llamo a action de vuex
-            if(response==true){
-               
-                 this.$router.push('/projects')
-        
-            }else{//aca modificar computadas
-                console.log("data incorrecta")
-            }
-        
-        },
-        ...mapGetters("user",['isLoggedIn']),
-        ...mapActions("user",['login'])
-        
-        
-    },
-    data(){
-        return{
-            
-            user:'',
-            password:''
-        
-            
-        }
-    }
+    components:{loginC,links}
     
 }
 </script>
 <style>
-.card{
-    
-    width: fit-content;
-    
-}
-.user{
-    position: relative;
-    margin: auto;
-    overflow: auto;
-}
-.pass{
-    position: relative;
-    margin-top: 3%;
-    overflow: auto;
-    
-    
-}
-.login{
+
+
+#fila1{
     margin-top: 10%;
 }
-#create{
-    position: relative;
-    left: 1%;
-    padding-right: 15%;
-    padding-left: 17%;
+#testin{
+    height: 100vh;
+    background-image: url("https://www.bing.com/th?id=OHR.LaughingZebras_ROW1936408378_1920x1080.jpg");
 }
 
 </style>

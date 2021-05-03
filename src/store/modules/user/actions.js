@@ -16,7 +16,8 @@ export async function login({commit},data){
             body:urlencoded
             
         });
-        let resMdd = await res.json();
+        var resMdd = await res.json();
+        console.log(resMdd)
         localStorage.setItem("token",resMdd.token)
         localStorage.setItem("idUser",resMdd.Usuario.nombre)
         commit ('user/auth_success',resMdd,{root:true})
@@ -25,7 +26,7 @@ export async function login({commit},data){
         commit('user/auth_error','',{root:true})
         console.log("hubo un error");
         
-        return Error;
+        return resMdd.err;
     }
 }
 export function logout({commit}){
