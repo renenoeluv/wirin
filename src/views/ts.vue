@@ -1,25 +1,18 @@
 <template>
   <div id="app">
-    <h1>project</h1>
-    <project-list></project-list>
-    <router-view/>
-    <div id="nav">
-      <router-link to="/pistar">Pistar</router-link> |
-      <router-link to="/Caview">CA</router-link>|
-      <router-link to="/">Project</router-link>
-      <router-link to="/test"> test</router-link>
-    </div>
     
-    <router-view/>
     
   </div>
 </template>
 <script>
-import ProjectList from '../components/ProjectList.vue';
 
 export default {
-  components: { ProjectList },
+  components: {},
   name: "test",
+  methods:{
+    
+    
+  }
   
 };
 </script>

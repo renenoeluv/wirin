@@ -1,88 +1,84 @@
 <template>
     <div>
-        
+        <modalN></modalN>
      </div>
 </template>
 <script>
+import * as messages from '../helper/messagesList'
+import modalN from '../components/modals/modalN'
+
+
 // ======================================================================
 // componente usado para envio de datos con el iframe
 // ======================================================================
 export default {
     name:"mensaje",
+    components:{modalN},
+    data(){
+        return{
+            msgR:{}
+        }
+    },
     props:
         ['child']
     ,
   mounted(){  //servira para actualizar cada vez el iframe
+    this.mount();
     this.$root.$refs.mensaje = this; // referencio para acceder desde otros componentes
       window.addEventListener('message', this.receiveMessage)
   },
 
  methods: {
-    test: function(){
-        console.log('holo')
+    async mount (){
+        this.msgR = await messages.recieveR()
     },
     async envio_data (message) {//arreglar if 
         var wn;
-        if(message=='m0'){
-            let mensaje={
-            ok:true,
-            idm:0,
-            token:"aca va el token",
-            id:localStorage.getItem('idProject')
-            };
-            wn = await document.getElementById('piStar').contentWindow;
-    // postMessage arguments: data to send, target origin
-            console.log('intentando pasar datos');
-            wn.postMessage(mensaje, this.child);
-        }else if(message=='m1'){
-            let mensaje={
-            ok:true,
-            idm:1,
-            state:'transform',
-            };
-            wn = await document.getElementById('piStar').contentWindow;
-    // postMessage arguments: data to send, target origin
-            console.log('intentando pasar datos');
-            wn.postMessage(mensaje, this.child);
-        }else if(message=='m2'){
-            let mensaje={
-            ok:true,
-            idm:2,
-            state:'verify',
-            };
-            wn = await document.getElementById('piStar').contentWindow;
-    // postMessage arguments: data to send, target origin
-            console.log('intentando pasar datos');
-            wn.postMessage(mensaje, this.child);
-        }else if(message=='m3'){
-            let mensaje={
-            ok:true,
-            idm:3,
-            state:'save',
-            };
-            wn = await document.getElementById('piStar').contentWindow;
-    // postMessage arguments: data to send, target origin
-            console.log('intentando pasar datos');
-            wn.postMessage(mensaje, this.child);
-        }else{
-            let mensaje={
-            ok:false,
-            };
-            wn = await document.getElementById('piStar').contentWindow;
-    // postMessage arguments: data to send, target origin
-            console.log('intentando pasar datos');
-            wn.postMessage(mensaje, this.child);
+        var messagesList=await messages.sendR()
+        var mensaje
+        var flag=true
+        var n=0
+        var i=0
+        while(flag && n<messagesList.length){
+            i=messagesList[n]
+            if(message==i.idm){
+                
+                mensaje=i;
+                if(message==0){
+                    mensaje.id=localStorage.getItem('idProject')
+                }
+                flag=false
+            }
+            n=n+1
         }
-      
+        console.log(mensaje)
+        wn = await document.getElementById('piStar').contentWindow;
+        // postMessage arguments: data to send, target origin
+        console.log('intentando pasar datos');
+        wn.postMessage(mensaje, this.child);
+        
     },
     receiveMessage (event) {
-        if(event.data==="cargada"){
-            console.log(event.data);
-            this.envio_data('m0');
-            console.log("mensaje recibido");
-        }else{
-            console.log(event.data)
+        var messagesList=this.msgR
+        var flag= true
+        var i
+        var n=0
+        while(flag && n<messagesList.length){
+            i=messagesList[n]
+            console.log(messagesList[n])
+            if(event.data.idm==i.idm){
+                    if(i.idm==0){
+                        this.envio_data('0');
+                    }else if (i.actions=="modal"){
+                        console.log("54")
+                        this.$root.$refs.modalN.showMsgBoxOne();
+                    }
+                flag=false
+            }
+            n=n+1
         }
+
+
          
     }
 

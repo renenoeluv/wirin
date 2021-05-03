@@ -55,16 +55,19 @@
 </style>
 <script>
 import { mapActions } from 'vuex'
-
+//import store from '../store'
 export default {
-    data(){
+    data(){//borrar 
         return{
-         idUser:'idu1',
+         idUser:'nuevo2',
          nombre:'',
          estado:true,
          ultimaActualizacion: new Date()
           
         }
+    },
+    mounted(){
+        this.idUser=localStorage.getItem("idUser")
     },
     methods:{
             ... mapActions('projects',['CreateProject']),

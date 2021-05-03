@@ -4,7 +4,7 @@
       <div v-if="home">
 
         <b-navbar variant="faded" type="light">
-        <b-navbar-brand to="/">
+        <b-navbar-brand to="/projects">
           <b-icon icon="house-door" scale="2" variant="primary" title="Projects Dashboard"></b-icon>
         </b-navbar-brand>
         </b-navbar>
@@ -34,13 +34,14 @@
           <b-dropdown-item href="#">ES</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-navbar-brand >About</b-navbar-brand>
-        <b-navbar-brand >Logout</b-navbar-brand>
+        <b-navbar-brand @click="logout">Logout</b-navbar-brand>
         
       </b-navbar-nav>
     </b-collapse>    
     </b-navbar>
 </template>
 <script>
+import store from '../store'
 export default {
     
     props: {
@@ -49,7 +50,15 @@ export default {
         type:Boolean,
         default:true
       }
-}
+  },
+  methods:{
+    logout: function () {
+        store.dispatch('user/logout')
+        .then(() => {
+          this.$router.push('/')
+        })
+      }
+  }
       
     
 }

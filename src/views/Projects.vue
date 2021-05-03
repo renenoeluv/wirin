@@ -25,7 +25,7 @@ export default {
   components:{
     sidebar,
     ProjectList,
-    Navbar
+    Navbar,
   }
   
 };

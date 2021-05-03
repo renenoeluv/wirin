@@ -20,5 +20,5 @@ export default {
   text-align center
   color #2c3e50
   margin-top 60 px
-  background color #010
+  background color #070
 </style>
