@@ -9,28 +9,41 @@ import caview from '../views/Caview.vue'
 //
 import test from '../views/ts.vue'
 // 
+import store from '../store'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/pistar',
     name: 'pistarv',
-    component: pistarv
+    component: pistarv,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: '/caview',
     name: 'caview',
-    component: caview
+    component: caview,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: '/projects',
     name: 'projects',
-    component: projectsv
+    component: projectsv,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: '/project',
     name: 'project',
-    component: projectv
+    component: projectv,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: '/test',
@@ -53,5 +66,15 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters['user/isLoggedIn']) {//obtengo compruebo estado de getters isloggedin
+      next()
+      return
+    }
+    next('/') 
+  } else {
+    next() 
+  }
+})
 export default router

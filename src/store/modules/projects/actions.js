@@ -1,8 +1,15 @@
-export async function fetchProjects({commit}){
+export async function fetchProjects({commit},user){
     try {
+        var myHeaders = new Headers();
+        myHeaders.append("token",localStorage.getItem("token"));
         console.log("obteniendo proyectos");
-        let res = await fetch("http://localhost:3000/proyecto?idUser=idu1",{
+        console.log(user)
+        let url="http://localhost:3000/proyecto?"
+        url=url + "idUser="+user
+        console.log(url)
+        let res = await fetch(url,{
             method: 'GET',
+            headers:myHeaders,
         });
         let resMdd = await res.json();
         commit ('projects/setProjects',resMdd,{root:true})
@@ -15,6 +22,10 @@ export async function fetchProjects({commit}){
 export async function CreateProject({commit},data){
     
     try {
+        var myHeaders = new Headers();
+        myHeaders.append("token",localStorage.getItem("token"));
+        myHeaders.append('Content-Type', 'application/json')
+        
         console.log("ceando proyecto");
         data = await JSON.stringify(data)
         //data = await JSON.parse(data)
@@ -23,10 +34,7 @@ export async function CreateProject({commit},data){
         console.log(data)
         let res = await fetch("http://localhost:3000/proyecto",{
             method: 'POST',
-            headers: {
-                        'Content-Type': 'application/json'
-                        //'Content-Type': 'application/x-www-form-urlencoded',
-                      },
+            headers: myHeaders,
                       
             body:data
             
@@ -53,14 +61,17 @@ export async function UpdateProject({commit},data){
         let url ="http://localhost:3000/proyecto/"
         url=url+id
         console.log(url)
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("email", data.email);
+        urlencoded.append("password", data.password);
         let res = await fetch(url,{
             method: 'PUT',
             headers: {
-                        'Content-Type': 'application/json'
-                        //'Content-Type': 'application/x-www-form-urlencoded',
+                        //'Content-Type': 'application/json'
+                        'Content-Type': 'application/x-www-form-urlencoded',
                       },
                       
-            body:data
+            body:urlencoded
             
         });
         let resMdd = await res.json();

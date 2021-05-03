@@ -5,8 +5,9 @@ export function setProjects(state, projects){
 
 export function addProject(state, projects){
     console.log(projects);
-    state.projects.cuantos= state.projects.cuantos +1;
+    
     state.projects.proyecto.push(projects.proyecto)
+    state.projects.cuantos= state.projects.cuantos +1;
 }
 export function modifyProject(state, projects){
     console.log(projects)
