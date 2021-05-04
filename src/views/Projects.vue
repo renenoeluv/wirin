@@ -2,30 +2,35 @@
   <div id="ts">
    
     <navbar 
+
       :create="true"
+      @openProject=tes
     ></navbar>
-    <b-container fluid="sm">
-    <sidebar/>
-    </b-container>
-    <b-container fluid="xl">
+    <b-alert show variant="success">My Projects</b-alert>
+    
+    <b-container fluid=xl>
       <div id="test2">
         <project-list></project-list>
       </div>
     </b-container>
+    <modalt></modalt>
   </div>
   
 </template>
 
 <script>
-import sidebar from "../components/sidebar.vue"
+import modalt from '../components/modals/modalC'
 import ProjectList from '../components/ProjectList.vue';
 import Navbar from '../components/Navbar.vue';
 export default {
   name:'Projects',
   components:{
-    sidebar,
+    modalt,
     ProjectList,
     Navbar,
+  },
+  methods:{
+    
   }
   
 };

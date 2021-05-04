@@ -4,6 +4,11 @@
       :home="false"
     ></navbar>
     <ca></ca>
+    <buttonbar
+      :transform="true"
+      :verify="true"
+      :autosave="false"
+    ></buttonbar>
   </div>
 </template>
 
@@ -11,13 +16,15 @@
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
 //import pistar from '@/comp<onents/Pistar.vue'
+import buttonbar from '../components/Buttonbar'
 import ca from '../components/CA.vue'
 import navbar from '../components/Navbar'
 export default {
   name: 'CA',
   components: {
     ca,
-    navbar
+    navbar,
+    buttonbar
   }
 }
 </script>

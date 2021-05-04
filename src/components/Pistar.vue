@@ -1,12 +1,12 @@
 <template>
-  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+  <!-- <div class="embed-responsive embed-responsive-16by9 z-depth-1-half"> -->
+    <div>
     <mensaje child="http://localhost:8090/"></mensaje>
     <iframe
       class="responsive-iframe"
       id="piStar"
       src="http://localhost:8090/"
-      width="1340"
-      height="600"
+    
       frameborder="0"
       allowfullscreen
     ></iframe>
@@ -43,3 +43,9 @@ export default {
     
 }
 </script>
+<style >
+.responsive-iframe{
+  z-index: -1;
+  margin-top: 72px;
+}
+</style>

@@ -10,6 +10,11 @@ export function addProject(state, projects){
     state.projects.cuantos= state.projects.cuantos +1;
 }
 export function modifyProject(state, projects){
+    
+    if(projects.proyecto.estado==false){
+        console.log("sasda")
+        return true
+    }
     console.log(projects)
     var i=0
     state.projects.proyecto.forEach(element => {
@@ -18,5 +23,9 @@ export function modifyProject(state, projects){
         }
         i=i+1
     });
+    state.projects.cuantos= state.projects.cuantos -1;
+    state.projects.cuantos= state.projects.cuantos +1;
+
+
 
 }

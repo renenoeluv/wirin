@@ -1,5 +1,5 @@
 <template>
-<b-navbar toggleable="md" type="dark" variant="dark">
+<b-navbar toggleable="md" type="dark" variant="dark" fixed="bottom">
      
      
     <div v-if="transform">

@@ -64,7 +64,7 @@
         data(){
             return{
                 paginate:['projects'],
-                perPage: 50
+                perPage: 9
             }
             
         },
@@ -95,3 +95,8 @@
         }
     }
 </script>
+<style scoped>
+ul{
+    padding-left: 0%;
+}
+</style>

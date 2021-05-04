@@ -1,12 +1,10 @@
 <template>
-    <div id="testin">
+    <div id="testing">
         <b-container fluid="xl">
             <b-row></b-row>
             <b-row id="fila1" align-v="center">
-                <b-col>
-                    
-                </b-col>
-                <b-col>
+                
+                <b-col offset-md="4">
                     <loginC></loginC>
                 </b-col>
                 <b-col >
@@ -14,8 +12,7 @@
                 </b-col>
                  
             </b-row>
-            <b-row>
-            </b-row>
+            
               
         <b-navbar toggleable type="dark" variant="dark" fixed="bottom">
             <b-navbar-brand>informacion de pagina?</b-navbar-brand>
@@ -42,7 +39,7 @@ export default {
 #fila1{
     margin-top: 10%;
 }
-#testin{
+#testing{
     height: 100vh;
     background-image: url("https://www.bing.com/th?id=OHR.LaughingZebras_ROW1936408378_1920x1080.jpg");
 }

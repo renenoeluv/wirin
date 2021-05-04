@@ -3,7 +3,9 @@
     <navbar
       :home="false"
     ></navbar>
-    <pistar></pistar>
+    <div id="tt"></div>
+      <pistar></pistar>
+    
     <buttonbar
       :transform="true"
       :verify="true"
@@ -30,3 +32,5 @@ export default {
   }
 }
 </script>
+<style scoped>
+</style>

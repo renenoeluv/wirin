@@ -13,6 +13,7 @@ export async function fetchProjects({commit},user){
         });
         let resMdd = await res.json();
         commit ('projects/setProjects',resMdd,{root:true})
+        return true
     } catch {
         console.log("hubo un error");
         
@@ -20,7 +21,7 @@ export async function fetchProjects({commit},user){
     }
 }
 export async function CreateProject({commit},data){
-    
+    console.log(data)
     try {
         var myHeaders = new Headers();
         myHeaders.append("token",localStorage.getItem("token"));
@@ -48,33 +49,34 @@ export async function CreateProject({commit},data){
         return Error;
     }
 }
-export async function UpdateProject({commit},data){
+export async function UpdateProject({dispatch,commit},data){
     
     try {
         console.log("actualizando proyectos");
         let id = data._id
+        
         data = await JSON.stringify(data)
         //data = await JSON.parse(data)
-        console.log(data)
+        
         //data = await JSON.stringify(data)
         console.log(data)
         let url ="http://localhost:3000/proyecto/"
         url=url+id
         console.log(url)
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("email", data.email);
-        urlencoded.append("password", data.password);
+       
         let res = await fetch(url,{
             method: 'PUT',
             headers: {
-                        //'Content-Type': 'application/json'
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json'
+                        //'Content-Type': 'application/x-www-form-urlencoded',
                       },
                       
-            body:urlencoded
+            body:data
             
         });
         let resMdd = await res.json();
+        console.log(resMdd)
+        await dispatch('fetchProjects',(localStorage.getItem("idUser")))
         commit ('projects/modifyProject',resMdd,{root:true})
         return true
     } catch {

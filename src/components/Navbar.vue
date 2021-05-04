@@ -1,11 +1,11 @@
 <template>
-<b-navbar toggleable="md" type="dark" variant="dark">
-     
+<b-navbar toggleable="md" type="dark"  variant="dark" style="z-index:0">
+     <b-col align-self="center" md="0">
       <div v-if="home">
 
         <b-navbar variant="faded" type="light">
         <b-navbar-brand to="/projects">
-          <b-icon icon="house-door" scale="2" variant="primary" title="Projects Dashboard"></b-icon>
+          <b-icon icon="house-door" scale="2.4" variant="primary" title="Projects Dashboard"></b-icon>
         </b-navbar-brand>
         </b-navbar>
 
@@ -15,41 +15,52 @@
            <b-icon icon="house-door" scale="2" variant="primary"></b-icon>
         </b-navbar-brand>
         </b-navbar>
-      </div>   
-
-      <b-navbar-brand style="position:relative;left:50%">Welcome User</b-navbar-brand>
-      <div v-if="create">
-          <b-navbar-brand  v-b-toggle.sidebar-variant>Create Project</b-navbar-brand>
       </div>
-      
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
-
+     </b-col>
+    
+     <b-col align-self="end" md="2">   
+      <div v-if="create">
+          
+            <b-button variant="outline-info" class="mb-2" v-b-modal="'modalC'" @click="$emit('CreateProject')">
+            
+              <b-icon icon="plus-square" aria-hidden="true"  scale="1" ></b-icon> Create Project
+              
+            </b-button>
+            
+      </div>
+     </b-col>
+     <b-col align-self="center" md="3" offset-md="2">
+      <b-navbar-brand id="welcome">Welcome {{user}}</b-navbar-brand>
+     </b-col>
+    
+      <b-col align-self="end" offset-lg="3">
       <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto">
-        
-        <b-nav-item-dropdown text="settings" right>
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-navbar-brand >About</b-navbar-brand>
-        <b-navbar-brand @click="logout">Logout</b-navbar-brand>
+      <b-navbar-nav id="b" class="ml-auto">
+        <b-nav-item>About</b-nav-item> 
+        <b-button variant="outline-danger" class="mb-2" @click="logout">
+          <b-icon icon="power" aria-hidden="true" ></b-icon> Logout
+        </b-button>
         
       </b-navbar-nav>
-    </b-collapse>    
+      </b-col>
     </b-navbar>
 </template>
 <script>
 import store from '../store'
 export default {
-    
+    data(){
+      return{
+        user:{}
+      }
+    },
     props: {
       create:Boolean,
       home:{
         type:Boolean,
         default:true
       }
+  },mounted(){
+     this.user=localStorage.getItem("idUser")
   },
   methods:{
     logout: function () {
@@ -63,3 +74,11 @@ export default {
     
 }
 </script>
+<style scoped>
+
+#create{
+  z-index: 1;
+  padding-left: 0%;
+}
+
+</style>

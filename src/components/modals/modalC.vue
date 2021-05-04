@@ -1,27 +1,28 @@
 <template>
   <div>
     <b-modal
-      id="my-modal"
+      id="modalC"
       ref="modal"
-      :title="title"
+      title="New Project"
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOk"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
-          :label="label"
+          label="Enter de name of the new project :"
           label-for="name-input"
           :invalid-feedback="invalidFeedback"
           :state="nameState"
         >
-        {{name_project}}
+        
           <b-form-input
             id="name-input"
             v-model="name"
             :state="nameState"
             required
           ></b-form-input>
+          Project name:{{name}}
         </b-form-group>
       </form>
     </b-modal>
@@ -31,34 +32,24 @@
 <script>
 import {test} from '../../helper/nameProject'
 import { mapActions } from 'vuex'
+
   export default {
     data() {
       return {
         name: '',
         nameState: null,
         namecheck:true,
-        actions2P:false
+        actions2P:false,
+        data:{
+          nombre:'',
+          estado:'',
+          idUser:'',
+          ultimaActualizacion:''
+        }
       }
     },
-    props:{
-      project:{},
-      name_project:{},
-      action:{}
-
-    },
     computed:{
-      title(){//modificador de titulo de modal
-        switch (this.action) {
-          case "edit":
-            return "Edit Project";
-          case "del":
-            return "Delete project";
-            
-          default:
-            return "";
-        }
-        
-      },
+      
       invalidFeedback(){//modificador de texto de feedback
         if(!this.name){
           return "Name is required"
@@ -67,17 +58,6 @@ import { mapActions } from 'vuex'
           return "the project name is assigned to another project"
         }
         return ""
-      },
-      label(){//modificador de label de form
-        switch (this.action) {
-            case "edit":
-              return "Enter the new name";
-            case "del":
-              return "write the name of the project";
-              
-            default:
-              return "";
-          }
       }
       
     },
@@ -92,7 +72,7 @@ import { mapActions } from 'vuex'
         this.nameState = null
       },
       handleOk(bvModalEvt) {
-        console.log(this.project)
+        console.log(this.name)
         // Prevent modal from closing
         bvModalEvt.preventDefault()
         // Trigger submit handler
@@ -106,51 +86,35 @@ import { mapActions } from 'vuex'
         if (!this.checkFormValidity()) {
           return
         }
-        let state =await this.modify()
-        await this.showMsgBoxOne(state)
+        let state= await this.Create()
         // Hide the modal manually
+        console.log(state)
+        await this.showMsgBoxOne(state)
         this.$nextTick(() => {
-          this.$bvModal.hide('my-modal')
+        this.$bvModal.hide('modalC')
         })
+        
+        
       },
       nameValidity(name){//verifica que el nuevo nombre sea valido
-        console.log("marca")
         const testtttt = test(name)
         this.namecheck= testtttt
         this.nameState=testtttt
         return testtttt
       },
-      ... mapActions('projects',['UpdateProject']),
-      async modify(){//funcion encargada de interactuar con vuex
-        var data;
-        if(this.action=="edit"){
-          data = {
-            nombre:this.name,
-            _id:this.project
-          }
-        }
-        if(this.action=="del"){
-          data = {
-            _id:this.project,
-            estado:this.actions2P
-          }
-        }
-
-        return await this.UpdateProject(data)
-       
-
-           
+      ... mapActions('projects',['CreateProject']),
+      async Create(){//funcion encargada de interactuar con vuex
+        this.data.nombre=this.name
+        this.data.estado=true
+        this.data.idUser=localStorage.getItem("idUser")
+        this.data.ultimaActualizacion= new Date()
+        return await this.CreateProject(this.data)
       },
       showMsgBoxOne(state) {
         this.boxOne = ''
         var message
         if(state==true){
-          if(this.action=="edit"){
-            message='The project was edited'
-          }else{
-            message='The project was deleted'
-          }
-          
+          message='The project was created'
         }else{
           message = "An error has occurred"
         }
