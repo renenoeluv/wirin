@@ -9,7 +9,7 @@
             
             variant="success"
             
-            @click="$emit('openProject',project.idProyecto)"
+            @click="$emit('openProject',project.idProyecto,project.nombre)"
         
         >
             open project

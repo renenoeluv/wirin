@@ -3,8 +3,8 @@
         <navbar 
             :create="false"
         ></navbar>
-        
-        <b-container fluid="xl">
+        <alertbar Text="Project" :project="project_name"></alertbar>
+        <b-container fluid="lg" style="margin-top:10%;">
             <b-row cols-md="1" align-content="center">
                 <models-item></models-item>
             </b-row>
@@ -14,8 +14,18 @@
 <script>
 import ModelsItem from '../components/ModelsItem.vue'
 import Navbar from '../components/Navbar.vue'
+import alertbar from '../components/alertbar'
 export default {
-  components: { Navbar, ModelsItem },
-    name:'project'
+  components: { Navbar, ModelsItem, alertbar },
+    name:'project',
+    computed:{
+        project_name(){
+            return  localStorage.getItem("projectName")
+        }
+
+    }
 }
 </script>
+<style scoped>
+
+</style>

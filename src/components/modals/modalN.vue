@@ -17,10 +17,12 @@
       this.$root.$refs.modalN = this;
     },
     methods:{
-      showMsgBoxOne() {
+      showMsgBoxOne(title,message) {
         this.boxOne = ''
 
-        this.$bvModal.msgBoxOk('Action completed')
+        this.$bvModal.msgBoxOk(message,{
+          title:title
+        })
           .then(value => {
             this.boxOne = value
           })

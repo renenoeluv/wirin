@@ -77,9 +77,10 @@
         methods:{
             ...mapState("user",['user']),
             ...mapActions('projects',['fetchProjects']),
-            openProject(project){
+            openProject(project,nombre){
                 console.log(project)
                 localStorage.setItem("idProject",project)
+                localStorage.setItem("projectName",nombre)
                 return this.$router.push('/project')//devuelve vista de projecto
             },
             modal(id,name_project,action){//funcion auxiliar para modificar props

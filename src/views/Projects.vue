@@ -6,8 +6,7 @@
       :create="true"
       @openProject=tes
     ></navbar>
-    <b-alert show variant="success">My Projects</b-alert>
-    
+    <alertbar text="My Projects" />
     <b-container fluid=xl>
       <div id="test2">
         <project-list></project-list>
@@ -22,16 +21,16 @@
 import modalt from '../components/modals/modalC'
 import ProjectList from '../components/ProjectList.vue';
 import Navbar from '../components/Navbar.vue';
+import Alertbar from '../components/alertbar.vue';
 export default {
   name:'Projects',
   components:{
     modalt,
     ProjectList,
     Navbar,
+    Alertbar
   },
-  methods:{
-    
-  }
+  
   
 };
 </script>

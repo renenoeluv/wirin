@@ -65,13 +65,14 @@ export default {
         var n=0
         while(flag && n<messagesList.length){
             i=messagesList[n]
-            console.log(messagesList[n])
+            //console.log(messagesList[n])
             if(event.data.idm==i.idm){
                     if(i.idm==0){
                         this.envio_data('0');
                     }else if (i.actions=="modal"){
                         console.log("54")
-                        this.$root.$refs.modalN.showMsgBoxOne();
+
+                        this.$root.$refs.modalN.showMsgBoxOne(i.state,i.state);
                     }
                 flag=false
             }

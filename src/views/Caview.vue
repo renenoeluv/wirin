@@ -5,8 +5,8 @@
     ></navbar>
     <ca></ca>
     <buttonbar
-      :transform="true"
-      :verify="true"
+      :transform="false"
+      :verify="false"
       :autosave="false"
     ></buttonbar>
   </div>
