@@ -8,6 +8,7 @@
       :transform="false"
       :verify="false"
       :autosave="false"
+      :trazability="true"
     ></buttonbar>
   </div>
 </template>

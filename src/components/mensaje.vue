@@ -73,6 +73,8 @@ export default {
                         console.log("54")
 
                         this.$root.$refs.modalN.showMsgBoxOne(i.state,i.state);
+                    }else if(i.actions=="localStorage"){
+                        localStorage.setItem("trazability",event.data.message)
                     }
                 flag=false
             }
