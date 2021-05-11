@@ -15,9 +15,22 @@
             
               
         <b-navbar toggleable type="dark" variant="dark" fixed="bottom">
-            <b-navbar-brand>informacion de pagina?</b-navbar-brand>
-            
-    
+            <b-col sm="1"><b-navbar-brand>WIRIN Model-Driven Engineering Environment</b-navbar-brand></b-col>
+            <b-col  offset="10">
+                <b-row>
+                     <b-col md="4">
+                <b-icon scale="2" icon="facebook"  variant="white"></b-icon>
+                </b-col>
+                 <b-col md="4">
+              <b-icon  scale="2" icon="instagram"  variant="white"></b-icon>
+              </b-col>
+                 <b-col md="4">
+               
+               <b-icon scale="2" icon="github" style="padding=23px;" variant="white"></b-icon>
+               </b-col>
+                </b-row>
+            </b-col>
+             
          </b-navbar>
         </b-container>
          

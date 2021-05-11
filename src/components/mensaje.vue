@@ -25,6 +25,7 @@ export default {
   mounted(){  //servira para actualizar cada vez el iframe
     this.mount();
     this.$root.$refs.mensaje = this; // referencio para acceder desde otros componentes
+      //window.removeEventListener('message',this.receiveMessage)
       window.addEventListener('message', this.receiveMessage)
   },
 

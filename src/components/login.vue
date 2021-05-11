@@ -1,5 +1,6 @@
 <template>
     <div>
+        <b-card-group deck>
                     <b-card  body-border-variant="success" class="card" align="center">
                         <img src="../assets/logo.png" width="170">
                     
@@ -50,7 +51,7 @@
                         </div>
                         
                     </b-card>
-            
+        </b-card-group>   
                 
                 
     </div>
@@ -114,7 +115,7 @@ export default {
 }
 </script>
 <style>
-.card{
+/* .card{
     background-color: rgba(78, 73, 78, 0.11);
-}
+} */
 </style>

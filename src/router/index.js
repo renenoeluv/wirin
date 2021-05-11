@@ -4,7 +4,7 @@ import pistarv from '../views/Pistarview.vue'
 import projectsv from '../views/Projects.vue'
 import projectv from '../views/Project.vue'
 import login  from '../views/Login.vue'
-import register from '../views/Register.vue'
+import register from '../views/Registerview.vue'
 import caview from '../views/Caview.vue'
 //
 import test from '../views/ts.vue'

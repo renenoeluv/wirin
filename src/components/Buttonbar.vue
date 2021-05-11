@@ -62,7 +62,7 @@ methods:{
         this.$root.$refs.mensaje.envio_data(message);//llamo a funcion para enviar mensajes de componente mensaje
     },
     async trazabilityN(){
-        let t =await JSON.parse(localStorage.getItem("trazability"))
+        let t =await JSON.stringify(localStorage.getItem("trazability"))
         this.$root.$refs.modalN.showMsgBoxOne("trazability",t);
     }
 }

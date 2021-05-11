@@ -5,7 +5,7 @@ export async function fetchProjects({commit},user){
         console.log("obteniendo proyectos");
         console.log(user)
         let url="http://localhost:3000/proyecto?"
-        url=url + "idUser="+user
+        url=url + "idUser="+user+"&state=true"
         console.log(url)
         let res = await fetch(url,{
             method: 'GET',

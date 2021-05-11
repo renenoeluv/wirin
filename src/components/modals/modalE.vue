@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {test} from '../../helper/nameProject'
+import {nameP} from '../../helper/nameProject'
 import { mapActions } from 'vuex'
   export default {
     data() {
@@ -115,10 +115,10 @@ import { mapActions } from 'vuex'
       },
       nameValidity(name){//verifica que el nuevo nombre sea valido
         console.log("marca")
-        const testtttt = test(name)
-        this.namecheck= testtttt
-        this.nameState=testtttt
-        return testtttt
+        const n = nameP(name)
+        this.namecheck= n
+        this.nameState=n
+        return n
       },
       ... mapActions('projects',['UpdateProject']),
       async modify(){//funcion encargada de interactuar con vuex

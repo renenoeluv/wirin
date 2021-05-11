@@ -17,19 +17,22 @@
       this.$root.$refs.modalN = this;
     },
     methods:{
-      showMsgBoxOne(title,message) {
+      async showMsgBoxOne(title,message) {
         this.boxOne = ''
 
-        this.$bvModal.msgBoxOk(message,{
+        return await this.$bvModal.msgBoxOk(message,{
           title:title
         })
           .then(value => {
             this.boxOne = value
+            console.log("some")
+            return true
           })
           .catch(err => {
             
             // An error occurred
             console.log(err)
+            return false
           })
       },
     }
