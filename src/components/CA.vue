@@ -1,9 +1,9 @@
 <template>
   <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-    <mensaje :child=dir  idFrame="caModel"></mensaje>
+    <mensaje :child=dir  ></mensaje>
     <iframe
       class="embed-responsive-item"
-      id="caModel"
+      id="modeler"
       
       :src=dir
       width="1340"
