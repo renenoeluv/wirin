@@ -42,7 +42,10 @@ import loginC from '../components/login'
 import links from '../components/linksCard'
 export default {
     name:"login",
-    components:{loginC,links}
+    components:{loginC,links},
+    mounted(){
+        console.log(process.env.VUE_APP_LOGIN)
+    }
     
 }
 </script>

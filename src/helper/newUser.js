@@ -9,7 +9,7 @@ export async function register(data){
         urlencoded.append("email", data.email);
         urlencoded.append("password", data.password);
 
-        let res = await fetch("http://localhost:3000/usuario/",{
+        let res = await fetch(process.env.VUE_APP_REGISTER,{
             method: 'POST',
             headers: {
                         //'Content-Type': 'application/json'

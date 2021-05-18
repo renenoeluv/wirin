@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {nameP} from '../../helper/nameProject'
+import { test} from '../../helper/nameProject'
 import { mapActions } from 'vuex'
   export default {
     data() {
@@ -73,7 +73,7 @@ import { mapActions } from 'vuex'
             case "edit":
               return "Enter the new name";
             case "del":
-              return "write the name of the project";
+              return "Confirm that you want to delete this project by entering its name (case sensitive):";
               
             default:
               return "";
@@ -115,7 +115,7 @@ import { mapActions } from 'vuex'
       },
       nameValidity(name){//verifica que el nuevo nombre sea valido
         console.log("marca")
-        const n = nameP(name)
+        const n = test(name)
         this.namecheck= n
         this.nameState=n
         return n

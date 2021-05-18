@@ -6,7 +6,7 @@ export async function login({commit},data){
         var urlencoded = new URLSearchParams();//codifica la data para el typo de contenido requeroido(x-www...)
         urlencoded.append("email", data.email);
         urlencoded.append("password", data.password);
-        let res = await fetch("http://localhost:3000/login",{
+        let res = await fetch(process.env.VUE_APP_LOGIN,{
             method: 'POST',
             headers: {
                         //'Content-Type': 'application/json'

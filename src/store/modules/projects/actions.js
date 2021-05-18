@@ -4,7 +4,7 @@ export async function fetchProjects({commit},user){
         myHeaders.append("token",localStorage.getItem("token"));
         console.log("obteniendo proyectos");
         console.log(user)
-        let url="http://localhost:3000/proyecto?"
+        let url=process.env.VUE_APP_GET_PROJECT
         url=url + "idUser="+user+"&state=true"
         console.log(url)
         let res = await fetch(url,{
@@ -33,7 +33,7 @@ export async function CreateProject({commit},data){
         console.log(data)
         //data = await JSON.stringify(data)
         console.log(data)
-        let res = await fetch("http://localhost:3000/proyecto",{
+        let res = await fetch(process.env.VUE_APP_CREATE_PROJECT,{
             method: 'POST',
             headers: myHeaders,
                       
@@ -60,7 +60,7 @@ export async function UpdateProject({dispatch,commit},data){
         
         //data = await JSON.stringify(data)
         console.log(data)
-        let url ="http://localhost:3000/proyecto/"
+        let url =process.env.VUE_APP_UPDATE_PROJECT
         url=url+id
         console.log(url)
        

@@ -1,10 +1,11 @@
 <template>
   <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-    <mensaje child="http://localhost:8081/"></mensaje>
+    <mensaje :child=dir  idFrame="caModel"></mensaje>
     <iframe
       class="embed-responsive-item"
-      id="piStar"
-      src="http://localhost:8081/"
+      id="caModel"
+      
+      :src=dir
       width="1340"
       height="600"
       allowfullscreen
@@ -39,6 +40,11 @@ import Mensaje from './mensaje.vue'
 export default {
     components:{
         Mensaje
+    },
+    computed:{
+      dir(){
+        return process.env.VUE_APP_CAMODEL
+      }
     }
     
 }

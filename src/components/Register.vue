@@ -40,7 +40,7 @@
                         :invalid-feedback="invalidFeedbackPassword"
                         :state="statePassword"
                         >
-                           <b-form-input id="input-password" v-model="password" :state="statePassword" trim></b-form-input>
+                           <b-form-input id="input-password" type="password" v-model="password" :state="statePassword" trim></b-form-input>
                         </b-form-group>
                         <b-form-group
                         id="email"
@@ -49,7 +49,7 @@
                         :invalid-feedback="invalidFeedbackPasswordR"
                         :state="statePasswordR"
                         >
-                           <b-form-input id="input-passwordR" v-model="repeatPassword" :state="statePasswordR" trim></b-form-input>
+                           <b-form-input id="input-passwordR" type="password"  v-model="repeatPassword" :state="statePasswordR" trim></b-form-input>
                         </b-form-group>
                         <b-button variant="success" @click="create" block>Create User</b-button>
                     </b-card>

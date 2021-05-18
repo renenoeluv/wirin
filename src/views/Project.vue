@@ -18,6 +18,9 @@ import alertbar from '../components/alertbar'
 export default {
   components: { Navbar, ModelsItem, alertbar },
     name:'project',
+    mounted(){
+       // window.removeEventListener('message',this.receiveMessage,false)
+    },
     computed:{
         project_name(){
             return  localStorage.getItem("projectName")

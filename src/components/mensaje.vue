@@ -19,14 +19,17 @@ export default {
             msgR:{}
         }
     },
-    props:
-        ['child']
+    props:{
+        child:{},
+        idFrame:{}
+    }
     ,
   mounted(){  //servira para actualizar cada vez el iframe
     this.mount();
     this.$root.$refs.mensaje = this; // referencio para acceder desde otros componentes
-      //window.removeEventListener('message',this.receiveMessage)
-      window.addEventListener('message', this.receiveMessage)
+    
+      window.addEventListener('message', this.receiveMessage,true)
+       
   },
 
  methods: {
@@ -53,7 +56,7 @@ export default {
             n=n+1
         }
         console.log(mensaje)
-        wn = await document.getElementById('piStar').contentWindow;
+        wn = await document.getElementById(this.idFrame).contentWindow;
         // postMessage arguments: data to send, target origin
         console.log('intentando pasar datos');
         wn.postMessage(mensaje, this.child);
@@ -82,10 +85,11 @@ export default {
             n=n+1
         }
 
-
          
-    }
+    },
+    
 
  }
+
 }
 </script>

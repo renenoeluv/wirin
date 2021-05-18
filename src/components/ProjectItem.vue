@@ -4,7 +4,7 @@
         style="max-width : 30rem;"
         class="mmb-2"
     >Project ID: {{project.idProyecto}}
-    Last Update: {{(project.ultimaActualizacion)}}
+    
         <b-button
             
             variant="success"
@@ -21,7 +21,9 @@
              
             
         </b-dropdown>
-        
+        <template #footer>
+        <small class="text-muted">Last Update: {{(project.ultimaActualizacion)}}</small>
+      </template>
     </b-card>    
 </template>
 

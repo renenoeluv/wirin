@@ -1,12 +1,12 @@
 <template>
   <!-- <div class="embed-responsive embed-responsive-16by9 z-depth-1-half"> -->
     <div>
-    <mensaje child="http://localhost:8090/"></mensaje>
+    <mensaje :child=dir idFrame="piStar"></mensaje>
     <iframe
       class="responsive-iframe"
       id="piStar"
-      src="http://localhost:8090/"
-    
+      :src=dir
+      
       frameborder="0"
       allowfullscreen
     ></iframe>
@@ -39,6 +39,12 @@ import Mensaje from './mensaje.vue'
 export default {
     components:{
         Mensaje
+    },
+    computed:{
+      dir(){
+        return process.env.VUE_APP_PISTAR
+      }
+
     }
     
 }
