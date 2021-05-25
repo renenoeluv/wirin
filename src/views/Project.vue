@@ -20,6 +20,7 @@ export default {
     name:'project',
     mounted(){
        // window.removeEventListener('message',this.receiveMessage,false)
+       this.$root.$refs.mensaje.removeListener()
     },
     computed:{
         project_name(){

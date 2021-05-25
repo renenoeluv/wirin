@@ -87,6 +87,10 @@ export default {
 
          
     },
+    removeListener(){
+        window.removeEventListener("message",this.receiveMessage,true)
+
+    }
     
 
  }
