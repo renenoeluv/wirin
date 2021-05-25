@@ -56,7 +56,7 @@ export default {
             n=n+1
         }
         console.log(mensaje)
-        wn = await document.getElementById(this.idFrame).contentWindow;
+        wn = await document.getElementById('modeler').contentWindow;
         // postMessage arguments: data to send, target origin
         console.log('intentando pasar datos');
         wn.postMessage(mensaje, this.child);

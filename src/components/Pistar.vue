@@ -1,10 +1,10 @@
 <template>
   <!-- <div class="embed-responsive embed-responsive-16by9 z-depth-1-half"> -->
     <div>
-    <mensaje :child=dir idFrame="piStar"></mensaje>
+    <mensaje :child=dir ></mensaje>
     <iframe
       class="responsive-iframe"
-      id="piStar"
+      id="modeler"
       :src=dir
       
       frameborder="0"
