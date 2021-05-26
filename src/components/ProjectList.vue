@@ -34,14 +34,14 @@
             :action=action
             ></modelE>
         </div>
-        <b-alert v-else show variant="info">no hay proyectos para mostrar</b-alert>
+        <b-alert v-else show variant="info">No projects to show</b-alert>
         
     </div>   
     
 </template>
 
 <script>
-    import {mapActions, mapState,/*mapState,/*mapMutations*/} from 'vuex'
+    import {mapActions,/*mapState,/*mapMutations*/} from 'vuex'
     import ProjectItem from './ProjectItem'
     import store from '@/store'
     import modelE from './modals/modalE'
@@ -75,7 +75,7 @@
 
         },
         methods:{
-            ...mapState("user",['user']),
+            //...mapState("user",['user']),
             ...mapActions('projects',['fetchProjects']),
             openProject(project,nombre){
                 console.log(project)

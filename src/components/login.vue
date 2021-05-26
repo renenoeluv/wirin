@@ -5,7 +5,7 @@
                         <img src="../assets/logo.png" width="170">
                     
                         <b-form-group
-                            label="Username"
+                            label="Email"
                             label-for="name-input"
                             invalid-feedback=" Incorrect username"
                             :state="userState"

@@ -15,12 +15,12 @@
           :invalid-feedback="invalidFeedback"
           :state="nameState"
         >
-        {{name_project}}
           <b-form-input
             id="name-input"
             v-model="name"
             :state="nameState"
-            required
+            autofocus
+            
           ></b-form-input>
         </b-form-group>
       </form>
@@ -34,7 +34,7 @@ import { mapActions } from 'vuex'
   export default {
     data() {
       return {
-        name: '',
+        name: 'algo',
         nameState: null,
         namecheck:true,
         actions2P:false
@@ -50,9 +50,9 @@ import { mapActions } from 'vuex'
       title(){//modificador de titulo de modal
         switch (this.action) {
           case "edit":
-            return "Edit Project";
+            return "Edit "+this.name_project;
           case "del":
-            return "Delete project";
+            return "Delete "+this.name_project;
             
           default:
             return "";
@@ -63,15 +63,18 @@ import { mapActions } from 'vuex'
         if(!this.name){
           return "Name is required"
         }
+        if(!this.namecheck && this.action=="del"){
+          return "The name does not correspond to the project to delete"
+        }
         if(!this.namecheck){
-          return "the project name is assigned to another project"
+          return "The project name is assigned to another project"
         }
         return ""
       },
       label(){//modificador de label de form
         switch (this.action) {
             case "edit":
-              return "Enter the new name";
+              return "Enter the new name:";
             case "del":
               return "Confirm that you want to delete this project by entering its name (case sensitive):";
               
@@ -113,12 +116,27 @@ import { mapActions } from 'vuex'
           this.$bvModal.hide('my-modal')
         })
       },
-      nameValidity(name){//verifica que el nuevo nombre sea valido
+      nameValidity(name){//verifica que el nombre sea valido
         console.log("marca")
-        const n = test(name)
+        if(this.action=="edit"){
+          const n = test(name)
         this.namecheck= n
         this.nameState=n
         return n
+        }
+        if(this.action=="del"){
+          var n
+          if(this.name===this.name_project){
+            n=true
+          }else{
+            n=false
+          }
+          this.namecheck=n
+          this.nameState=n
+          return n
+
+        }
+        
       },
       ... mapActions('projects',['UpdateProject']),
       async modify(){//funcion encargada de interactuar con vuex

@@ -1,6 +1,5 @@
 import store from '@/store'
 export function test(name){
-    console.log("test corriendo")
     let fa = projects();
     var i=0
     var r=true

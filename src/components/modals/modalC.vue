@@ -10,7 +10,7 @@
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
-          label="Enter de name of the new project :"
+          label="Enter the name of the new project :"
           label-for="name-input"
           :invalid-feedback="invalidFeedback"
           :state="nameState"
@@ -22,7 +22,6 @@
             :state="nameState"
             required
           ></b-form-input>
-          Project name:{{name}}
         </b-form-group>
       </form>
     </b-modal>

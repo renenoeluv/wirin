@@ -73,10 +73,9 @@ export default {
             if(event.data.idm==i.idm){
                     if(i.idm==0){
                         this.envio_data('0');
-                    }else if (i.actions=="modal"){
-                        console.log("54")
+                    }else if (i.actions=="modal"){//revisar estructura de mensaje a mostrar 
 
-                        this.$root.$refs.modalN.showMsgBoxOne(i.state,i.state);
+                        this.$root.$refs.modalN.showMsgBoxOne(i.state,event.data.message);
                     }else if(i.actions=="localStorage"){
                         localStorage.setItem("trazability",event.data.message)
                     }
