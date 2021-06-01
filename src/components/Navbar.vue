@@ -11,8 +11,8 @@
 
       </div><div v-else>
         <b-navbar variant="faded" type="light">
-        <b-navbar-brand to="/project">
-           <b-icon icon="house-door" scale="2" variant="primary"></b-icon>
+        <b-navbar-brand to="/project" >
+           <b-icon icon="house-door" scale="2" variant="primary" @click="message('3')"></b-icon>
         </b-navbar-brand>
         </b-navbar>
       </div>
@@ -68,7 +68,12 @@ export default {
         .then(() => {
           this.$router.push('/')
         })
-      }
+      },
+    message(message){
+        console.log(message)
+        this.$root.$refs.mensaje.envio_data(message);//llamo a funcion para enviar mensajes de componente mensaje
+        
+    }
   }
       
     

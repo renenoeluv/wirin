@@ -75,7 +75,8 @@ export default {
                         this.envio_data('0');
                     }else if (i.actions=="modal"){//revisar estructura de mensaje a mostrar 
 
-                        this.$root.$refs.modalN.showMsgBoxOne(i.state,event.data.message);
+                         this.$root.$refs.modalN.showMsgBoxOne(i.state,event.data.message);
+                        
                     }else if(i.actions=="localStorage"){
                         localStorage.setItem("trazability",event.data.message)
                     }

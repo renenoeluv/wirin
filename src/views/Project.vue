@@ -15,18 +15,23 @@
 import ModelsItem from '../components/ModelsItem.vue'
 import Navbar from '../components/Navbar.vue'
 import alertbar from '../components/alertbar'
+
 export default {
   components: { Navbar, ModelsItem, alertbar },
     name:'project',
     mounted(){
        // window.removeEventListener('message',this.receiveMessage,false)
        this.$root.$refs.mensaje.removeListener()
+       
     },
     computed:{
         project_name(){
             return  localStorage.getItem("projectName")
         }
 
+    },
+    methods:{
+        
     }
 }
 </script>
