@@ -45,6 +45,7 @@ export default {
     components:{loginC,links},
     mounted(){
         console.log(process.env.VUE_APP_LOGIN)
+        console.log(process.env.VUE_APP_PISTAR)
     }
     
 }

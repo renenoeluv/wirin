@@ -6,6 +6,7 @@ import projectv from '../views/Project.vue'
 import login  from '../views/Login.vue'
 import register from '../views/Registerview.vue'
 import caview from '../views/Caview.vue'
+import verify from '../views/verify.vue'
 //
 import test from '../views/ts.vue'
 // 
@@ -60,6 +61,12 @@ const routes = [
     name: 'register',
     component: register
 
+  },
+  {
+    path:'/verify',
+    name: 'verify',
+    component: verify,
+    props: (route) => ({token: route.query.token})
   }
 ]
 

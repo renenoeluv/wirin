@@ -71,10 +71,16 @@ export default {
             if(this.stateName && this.stateEmailR && this.statePasswordR){
                 let res=await Uregister.register(this.$data)
                 if(res.ok=== true){
-                    let some= await this.$root.$refs.modalN.showMsgBoxOne("User created","The user "+this.name +" has been created");
-                    if(some===true){
-                        this.$router.push('/')
+                    let resEmail = await Uregister.send_mail({ url:process.env.VUE_APP_SEND_MAIL,email:this.$data.email})
+                    if(resEmail.ok=== true){
+                        let some= await this.$root.$refs.modalN.showMsgBoxOne("User created","The user "+this.name +" has been created");
+                        if(some===true){
+                            this.$router.push('/')
+                        }
+                    }else{
+                        console.log("error al enviar el correo")
                     }
+                    
                 }else{
                     this.emailError=false
                 }

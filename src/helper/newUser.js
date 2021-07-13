@@ -29,3 +29,44 @@ export async function register(data){
         return resMdd;
     }
 }
+export async function verify(data){
+ try{
+   let res = await fetch(process.env.VUE_APP_VERIFY,{
+     method:'GET',
+     headers:{
+       token: data
+     }
+   });
+   res= await res.json()
+   console.log(res)
+   return res
+ }catch(err){
+    console.log(err);
+    console.log("hubo un error")
+    return err
+ }
+}
+export async function send_mail(data){
+  let url= data.url
+  data = await JSON.stringify(data)
+  console.log(url)
+  console.log(data)
+  try{
+    let res = await fetch(url,{
+      method:'POST',
+      headers:{
+        "Content-Type": "application/json"
+
+      },
+      body:data
+    });
+
+    res =  await res.json()
+    console.log(res)
+    return res
+  }catch(err){
+    console.log("hubo un error")
+    console.log(err)
+    return err
+  }
+}

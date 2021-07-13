@@ -1,0 +1,8 @@
+version: "3.0"
+services: 
+    app:
+        image: koke/wirin
+        ports: 
+            - 8080:80
+        environment: 
+            - VUE_APP_PISTAR=http://192.168.0.223:8080
