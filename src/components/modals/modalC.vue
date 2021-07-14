@@ -44,7 +44,8 @@ import { mapActions } from 'vuex'
           estado:'',
           idUser:'',
           ultimaActualizacion:''
-        }
+        },
+        loader:''
       }
     },
     computed:{
@@ -103,6 +104,7 @@ import { mapActions } from 'vuex'
       },
       ... mapActions('projects',['CreateProject']),
       async Create(){//funcion encargada de interactuar con vuex
+        this.loading()
         this.data.nombre=this.name
         this.data.estado=true
         this.data.idUser=localStorage.getItem("idUser")
@@ -110,6 +112,7 @@ import { mapActions } from 'vuex'
         return await this.CreateProject(this.data)
       },
       showMsgBoxOne(state) {
+        this.loader.hide()
         this.boxOne = ''
         var message
         if(state==true){
@@ -128,7 +131,26 @@ import { mapActions } from 'vuex'
             // An error occurred
             console.log(err)
           })
-      }
+      },
+      async loading() {
+                this.loader = this.$loading.show({
+                    // Optional parameters
+                    container: this.fullPage ? null : this.$refs.card,
+                    canCancel: false,
+                    onCancel: this.onCancel,
+                    backgroundColor:"white",
+                    opacity:0,
+                    zIndex:1041,
+                    color: "black",
+                    loader:"bars"
+                },{
+                    // Pass slots by their names
+
+                });
+            },
+            onCancel() {
+                console.log('User cancelled the loader.')
+            },
     }
   }
 </script>

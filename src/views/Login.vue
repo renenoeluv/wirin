@@ -46,6 +46,9 @@ export default {
     mounted(){
         console.log(process.env.VUE_APP_LOGIN)
         console.log(process.env.VUE_APP_PISTAR)
+    },
+    methods:{
+        
     }
     
 }

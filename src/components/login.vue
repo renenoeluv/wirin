@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card-group deck>
+        <b-card-group deck ref="cardLogin">
                     <b-card  body-border-variant="success" class="card" align="center">
                         <img src="../assets/logo.png" width="170">
                     
@@ -71,16 +71,18 @@ export default {
     methods:{
 
         async sign(){
+            this.loading()
             this.userState=null
             this.passwordState=null
             let email = this.user
             let password= this.password
             let response=await this.login({email,password})//llamo a action de vuex
             if(response==true){
-               
+                this.loader.hide()
                  this.$router.push('/projects')
         
             }else{//aca modificar computadas
+                this.loader.hide()
                 console.log(response)
                 console.log("data incorrecta")
                 if(response.idErr==1){
@@ -91,6 +93,25 @@ export default {
             }
         
         },
+        async loading() {
+                this.loader = this.$loading.show({
+                    // Optional parameters
+                    container: this.fullPage ? null : this.$refs.cardLogin,
+                    canCancel: false,
+                    onCancel: this.onCancel,
+                    backgroundColor:"white",
+                    opacity:0,
+                    zIndex:99,
+                    color: "black",
+                    loader:"bars"
+                },{
+                    // Pass slots by their names
+
+                });
+            },
+            onCancel() {
+                console.log('User cancelled the loader.')
+            },
         ...mapGetters("user",['isLoggedIn']),
         ...mapActions("user",['login']),
         checkFormValidity() {
@@ -108,7 +129,7 @@ export default {
             password:'',
             userState:null,
             passwordState:null,
-            
+            loader:''
         }
     }
     

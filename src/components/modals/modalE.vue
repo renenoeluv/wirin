@@ -37,7 +37,8 @@ import { mapActions } from 'vuex'
         name: 'algo',
         nameState: null,
         namecheck:true,
-        actions2P:false
+        actions2P:false,
+        loader:''
       }
     },
     props:{
@@ -140,6 +141,7 @@ import { mapActions } from 'vuex'
       },
       ... mapActions('projects',['UpdateProject']),
       async modify(){//funcion encargada de interactuar con vuex
+        this.loading()
         var data;
         if(this.action=="edit"){
           data = {
@@ -160,6 +162,7 @@ import { mapActions } from 'vuex'
            
       },
       showMsgBoxOne(state) {
+        this.loader.hide()
         this.boxOne = ''
         var message
         if(state==true){
@@ -183,7 +186,26 @@ import { mapActions } from 'vuex'
             // An error occurred
             console.log(err)
           })
-      }
+      },
+      async loading() {   //vue loading overlay
+                this.loader = this.$loading.show({
+                    // Optional parameters
+                    container: this.fullPage ? null : this.$refs.card,
+                    canCancel: false,
+                    onCancel: this.onCancel,
+                    backgroundColor:"white",
+                    opacity:0,
+                    zIndex:1041,
+                    color: "black",
+                    loader:"bars"
+                },{
+                    // Pass slots by their names
+
+                });
+      },
+      onCancel() {
+                console.log('User cancelled the loader.')
+      },
     }
   }
 </script>

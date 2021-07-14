@@ -22,7 +22,7 @@
                         :invalid-feedback="invalidFeedbackEmail"
                         :state="stateEmail"
                         >
-                           <b-form-input id="input-email" v-model="email" :state="stateEmail" trim></b-form-input>
+                           <b-form-input id="input-email" v-model="email" type="email" :state="stateEmail" trim></b-form-input>
                         </b-form-group>
                         <b-form-group
                         id="email"
@@ -68,25 +68,54 @@ export default {
     components:{modalN},
     methods: {
         async create(){
-            if(this.stateName && this.stateEmailR && this.statePasswordR){
+            if(this.stateName && this.stateEmailR && this.stateEmail && this.statePasswordR){
+                this.loading()
                 let res=await Uregister.register(this.$data)
                 if(res.ok=== true){
                     let resEmail = await Uregister.send_mail({ url:process.env.VUE_APP_SEND_MAIL,email:this.$data.email})
                     if(resEmail.ok=== true){
+                        this.loader.hide()
                         let some= await this.$root.$refs.modalN.showMsgBoxOne("User created","The user "+this.name +" has been created");
                         if(some===true){
                             this.$router.push('/')
                         }
                     }else{
+                        this.loader.hide()
                         console.log("error al enviar el correo")
                     }
                     
                 }else{
+                    this.loader.hide()
                     this.emailError=false
+                    this.mailInUse=this.email
                 }
             }
         },
         
+        validEmail: function (email) {
+             // eslint-disable-next-line
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+      
+        },
+        loading(){
+            this.loader = this.$loading.show({
+                container: this.fullPage ? null : this.$refs.register,
+                canCancel: false,
+                OnCancel: this.OnCancel,
+                backgroundColor: "white",
+                opacity:0.5,
+                zIndex:10,
+                color:"black",
+                loader:"bars"
+            },{
+                //slot
+            });
+        },
+        onCancel(){
+            console.log('User cancelled the loader.')
+        },
+    
     },
    computed: {
       
@@ -109,24 +138,32 @@ export default {
         return 'Please enter your user.'
       },
       stateEmail(){
+          
           if(this.emailError===false){
-              return false
+              
+              if(this.mailInUse===this.email){
+                return false
+              }
           }
-          if(this.email.length >= 4){
-              return true
-          }else if (this.email.length > 0){
+          if(this.email.length>3){
+              if(!this.validEmail(this.email)){
               return false
           }else{
-              return null
+              return true
           }
+          }
+          
+          
+              return null
+          
       },
       invalidFeedbackEmail(){
+          if(!this.validEmail(this.email)){
+              return 'Enter a valid mail'
+        }
           if(this.emailError===false){
               return 'The email is in use'
           }
-          if (this.email.length > 0) {
-          return 'Enter at least 4 characters.'
-        }
           return "Please enter your mail"
       },
       stateEmailR(){
@@ -183,6 +220,8 @@ export default {
         password:'',
         repeatPassword:'',
         emailError:'',
+        loader:'',
+        mailInUse:''
       }
     }
         
